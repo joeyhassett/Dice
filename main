@@ -1,0 +1,112 @@
+//use global variables to keep up with the following:
+//rollOne, rollTwo, sum, point, winTotal, lossTotal
+
+var rolls = 1;
+var rollOne = 1;
+var rollTwo = 1;
+var sum = 1;
+var point = 1;
+var winTotal = 0;
+var lossTotal = 0;
+
+onEvent("start_button", "click", function( ) {
+  setScreen("gameScreen");
+});
+
+onEvent("play_again_button_win", "click", function( ) {
+  playAgain();
+  setScreen("gameScreen");
+});
+
+onEvent("play_again_button_lose", "click", function( ) {
+  playAgain();
+  setScreen("gameScreen");
+  setText("wins_amount", winTotal);
+  setText("loses_amount", lossTotal);
+});
+
+playGame();
+
+//create a function called playGame() that runs the entire game 
+//when you push a button on the screen
+function playGame() {
+  //insert your code here to make it play the game
+  firstRoll();
+  rollDice();
+}
+
+//create a function called rollDice() that rolls two dice and saves the value of them
+function rollDice() {
+  //insert your code here to roll the two dice and store the results
+  onEvent("second_roll_button", "click", function( ) {
+  rolls++;
+  setText("rolls_amount", rolls);
+  rollOne = randomNumber(1,6);
+  setText("roll_one_amount_main", rollOne);
+  rollTwo = randomNumber(1,6);
+  setText("roll_two_amount_main", rollTwo);
+  sum = rollOne + rollTwo;
+  setText("sum_amount", sum);
+  checkPoint();
+  });
+}
+
+//create a function called checkPoint() that checks to see if the sum == point
+//if sum == point, you win!
+//if sum == 7, you lose :(
+//if sum is anything else, roll again
+function checkPoint() {
+  //insert your code here to check the sum against the point
+  if (sum === point) {
+    setScreen("winScreen");
+    winTotal++;
+  }
+  if (sum === 7) {
+    setScreen("loseScreen");
+    lossTotal++;
+  } 
+}
+
+//create a function called firstRoll() that only handles the first roll of any game
+//on the first roll, a 7 or 11 is an automatic win
+//on the first roll, a 2, 3, or 12 is an automatic loss
+//on the first roll, any other value becomes the POINT that you try to hit later
+function firstRoll() {
+  //insert your code here to handle the first roll
+  onEvent("roll_dice_button", "click", function( ) {
+    rolls = 1;
+    setText("rolls_amount", rolls);
+    rollOne = randomNumber(1,6);
+    setText("roll_one_amount_main", rollOne);
+    rollTwo = randomNumber(1,6);
+    setText("roll_two_amount_main", rollTwo);
+    sum = rollOne + rollTwo;
+    setText("sum_amount", sum);
+    if (sum == 7 || sum == 11) {
+      setScreen("winScreen");
+      playAgain();
+      winTotal++;
+    } else if ((sum == 2 || sum == 3 || sum == 12)) {
+      setScreen("loseScreen");
+      playAgain();
+      lossTotal++;
+    } else {
+      point = sum;
+      setText("points_amount", point);
+    }
+  });
+}
+
+function playAgain() {
+  rolls = 0;
+  setText("rolls_amount", rolls);
+  rollOne = 0;
+  setText("roll_one_amount_main", rollOne);
+  rollTwo = 0;
+  setText("roll_two_amount_main", rollTwo);
+  sum = 0;
+  setText("sum_amount", sum);
+  point = 0;
+  setText("points_amount", point);
+  setScreen("gameScreen");
+}
