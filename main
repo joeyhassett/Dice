@@ -64,9 +64,6 @@ function checkPoint() {
 }
 
 //create a function called firstRoll() that only handles the first roll of any game
-//on the first roll, a 7 or 11 is an automatic win
-//on the first roll, a 2, 3, or 12 is an automatic loss
-//on the first roll, any other value becomes the POINT that you try to hit later
 function firstRoll() {
   //insert your code here to handle the first roll
   onEvent("roll_dice_button", "click", function( ) {
