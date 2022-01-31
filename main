@@ -1,4 +1,4 @@
-
+//Initiates all the variables used to track both players
 var rolls = 1;
 var rollOne = 1;
 var rollTwo = 1;
@@ -7,6 +7,7 @@ var point = 1;
 var winTotal = 0;
 var lossTotal = 0;
 
+//Starts the game
 onEvent("start_button", "click", function( ) {
   setScreen("gameScreen");
 });
