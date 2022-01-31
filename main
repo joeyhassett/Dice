@@ -62,7 +62,7 @@ function checkPoint() {
   } 
 }
 
-//create a function called firstRoll() that only handles the first roll of any game
+//Handles the first roll of each game
 function firstRoll() {
   //insert your code here to handle the first roll
   onEvent("roll_dice_button", "click", function( ) {
