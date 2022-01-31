@@ -26,8 +26,7 @@ onEvent("play_again_button_lose", "click", function( ) {
 
 playGame();
 
-//create a function called playGame() that runs the entire game 
-//when you push a button on the screen
+//Create a function that runs the entire game 
 function playGame() {
   //insert your code here to make it play the game
   firstRoll();
