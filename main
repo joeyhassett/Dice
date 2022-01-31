@@ -1,5 +1,3 @@
-//use global variables to keep up with the following:
-//rollOne, rollTwo, sum, point, winTotal, lossTotal
 
 var rolls = 1;
 var rollOne = 1;
