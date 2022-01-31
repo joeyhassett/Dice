@@ -51,9 +51,6 @@ function rollDice() {
 }
 
 //create a function called checkPoint() that checks to see if the sum == point
-//if sum == point, you win!
-//if sum == 7, you lose :(
-//if sum is anything else, roll again
 function checkPoint() {
   //insert your code here to check the sum against the point
   if (sum === point) {
